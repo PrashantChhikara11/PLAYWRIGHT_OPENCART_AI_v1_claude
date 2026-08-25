@@ -24,7 +24,7 @@ interface CustomerRow {
     date_added: string;
 }
 
-test('OpenCart customer registration cross-layer validation @master @regression @end-to-end @db', async ({
+test('OpenCart customer registration cross-layer validation @master @regression @db', async ({
     homePage,
     registerPage,
     myAccountPage,
