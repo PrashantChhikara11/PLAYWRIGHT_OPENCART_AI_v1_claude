@@ -57,7 +57,9 @@ export class HomePage {
      */
     async isGuestMenuDisplayed(): Promise<boolean> {
         try {
-            return (await this.linkRegister.isVisible()) && (await this.linkLogin.isVisible());
+            await this.linkRegister.waitFor({ state: 'visible', timeout: 10000 });
+            await this.linkLogin.waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking guest menu: ${error}`);
             return false;

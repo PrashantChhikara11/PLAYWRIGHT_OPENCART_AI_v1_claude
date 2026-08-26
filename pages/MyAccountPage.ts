@@ -23,7 +23,8 @@ export class MyAccountPage {
      */
     async isMyAccountPageExists(): Promise<boolean> {
         try {
-            return await this.headingMyAccount.isVisible();
+            await this.headingMyAccount.waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking My Account page: ${error}`);
             return false;

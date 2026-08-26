@@ -66,7 +66,8 @@ export class RegisterPage {
      */
     async isRegistrationSuccessful(): Promise<boolean> {
         try {
-            return await this.headingAccountCreated.isVisible();
+            await this.headingAccountCreated.waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking registration success: ${error}`);
             return false;

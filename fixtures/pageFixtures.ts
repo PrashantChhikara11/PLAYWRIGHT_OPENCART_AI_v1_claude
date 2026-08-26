@@ -35,6 +35,14 @@ type PageFixtures = {
 export const test = base.extend<PageFixtures>({
     homePage: async ({ page }, use) => {
         await page.goto(APP_URL);
+
+        // awesomeqa.com fronts the app behind a bot-check interstitial ("Checking your
+        // browser before accessing...") on the first request of a session. It clears itself
+        // client-side after a few seconds, so wait for it rather than assuming it's absent.
+        if ((await page.title()).includes('Checking your browser')) {
+            await page.waitForFunction(() => !document.title.includes('Checking your browser'), { timeout: 15000 });
+        }
+
         await use(new HomePage(page));
     },
     registerPage: async ({ page }, use) => {

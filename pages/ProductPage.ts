@@ -28,7 +28,8 @@ export class ProductPage {
      */
     async isProductPageDisplayed(productName: string): Promise<boolean> {
         try {
-            return await this.page.getByRole('heading', { name: productName, level: 1 }).isVisible();
+            await this.page.getByRole('heading', { name: productName, level: 1 }).waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking product page: ${error}`);
             return false;
@@ -62,7 +63,8 @@ export class ProductPage {
      */
     async isAddedToCartMessageDisplayed(): Promise<boolean> {
         try {
-            return await this.txtSuccessMessage.isVisible();
+            await this.txtSuccessMessage.waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking add-to-cart message: ${error}`);
             return false;

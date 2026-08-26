@@ -4,10 +4,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig({
-  timeout: 30 * 1000,   //30000 ms(30 secs)
+  timeout: 60 * 1000,   //60000 ms(60 secs) - remote target (awesomeqa.com) adds network latency and an initial bot-check wait
   testDir: './tests',
   fullyParallel: true,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
     ['list'],                           // Detailed console output

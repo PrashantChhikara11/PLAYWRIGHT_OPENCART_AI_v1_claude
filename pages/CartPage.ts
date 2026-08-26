@@ -34,7 +34,8 @@ export class CartPage {
      */
     async isProductInCart(productName: string): Promise<boolean> {
         try {
-            return await this.productRow(productName).isVisible();
+            await this.productRow(productName).waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking cart contents: ${error}`);
             return false;

@@ -24,7 +24,8 @@ export class SearchResultsPage {
      */
     async isProductDisplayed(productName: string): Promise<boolean> {
         try {
-            return await this.productLink(productName).first().isVisible();
+            await this.productLink(productName).first().waitFor({ state: 'visible', timeout: 10000 });
+            return true;
         } catch (error) {
             console.log(`Error checking search results: ${error}`);
             return false;
