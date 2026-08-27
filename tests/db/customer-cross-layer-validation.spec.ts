@@ -1,7 +1,7 @@
 /**
  * Test Case: OpenCart Customer Registration - Web + Admin + MySQL Cross-Layer Validation
  *
- * Tags: @master @regression @end-to-end @db
+ * Tags: @db
  *
  * Steps:
  * 1) Register a new customer through the frontend using dynamically generated data
@@ -24,7 +24,7 @@ interface CustomerRow {
     date_added: string;
 }
 
-test('OpenCart customer registration cross-layer validation @master @regression @db', async ({
+test('OpenCart customer registration cross-layer validation @db', async ({
     homePage,
     registerPage,
     myAccountPage,

@@ -40,7 +40,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: windows-latest
+    runs-on: [self-hosted, Windows]
 
     steps:
       - name: 📥 Checkout Repository

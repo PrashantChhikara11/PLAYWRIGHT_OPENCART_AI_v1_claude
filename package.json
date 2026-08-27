@@ -10,7 +10,7 @@
     "test:regression": "playwright test --grep @regression",
     "test:web": "playwright test --grep @web",
     "test:api": "playwright test --grep @api",
-    "test:db": "playwright test tests/db",
+    "test:db": "playwright test --config=playwright.db.config.ts",
     "test:e2e": "playwright test --grep @end-to-end",
     "test:datadriven": "playwright test --grep @datadriven",
     "test:master:headed": "playwright test --grep @sanity --headed",
