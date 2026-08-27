@@ -65,7 +65,7 @@ jobs:
           $suite = "${{ github.event.inputs.test_suite || 'test:e2e' }}"
           $browser = "${{ github.event.inputs.browser || 'chromium' }}"
           $mode = "${{ github.event.inputs.mode || 'headless' }}"
-          $tag = $suite -replace 'test:', ''
+          $tag = ($suite -replace 'test:', '') -replace '^e2e$', 'end-to-end'
           $browserFlag = "--project=$browser"
           $modeFlag = if ($mode -eq 'headed') { '--headed' } else { '' }
           npx playwright test --grep "@$tag" $browserFlag $modeFlag --output=test-results
